@@ -31,7 +31,6 @@
             ],
             "styles": [
               "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
-              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
               "src/assets/bootstrap/css/bootstrap.min.css",
               "src/assets/fonts/fontawesome-all.min.css"
@@ -105,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "432e30ef-c203-4473-a194-63011a453dd0"
   }
 }
