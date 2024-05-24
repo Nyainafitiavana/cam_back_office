@@ -2,8 +2,36 @@
   <nz-card nz-col nzSpan="8" class="card-login">
     <div nz-row>
       <div nz-col class="block-logo">
-        <img ngSrc="assets/CAM.png" alt="logo" class="cam_logo" height="500" width="500">
+        <img ngSrc="assets/CAM.png" alt="logo" class="cam_logo" height="500" width="500" priority>
       </div>
+    </div>
+    <div nz-row>
+      <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your email address!">
+            <nz-input-group nzPrefixIcon="mail">
+              <input type="text" nz-input formControlName="email" placeholder="Email address"/>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <br>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your Password!">
+            <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
+              <input [type]="passwordVisible ? 'text' : 'password'" nz-input formControlName="password" placeholder="Password"/>
+            </nz-input-group>
+            <ng-template #suffixTemplate>
+              <span
+                nz-icon
+                [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                (click)="passwordVisible = !passwordVisible"
+              ></span>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+        <br><br>
+        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Sing in</button>
+      </form>
     </div>
   </nz-card>
 </div>
