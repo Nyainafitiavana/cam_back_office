@@ -1,15 +1,15 @@
 .card-login {
-  margin: auto;
-  top:10%;
+  margin: 10% auto auto;
   min-height: 400px;
+  box-shadow: rgba(0, 0, 0, 0.49) 1px 1px 5px;
 }
 
-.card-content {
-  display: flex;
+.block-logo {
+  margin: auto;
 }
 
 .cam_logo {
-  width: 50%;
+  width: 160px;
   height: auto;
 }
 
