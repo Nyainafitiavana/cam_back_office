@@ -30,15 +30,11 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
-              "src/styles.css",
-              "src/assets/bootstrap/css/bootstrap.min.css",
-              "src/assets/fonts/fontawesome-all.min.css"
+              "src/styles.css"
             ],
-            "scripts": [
-              "src/assets/bootstrap/js/bootstrap.min.js",
-              "src/assets/js/theme.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {

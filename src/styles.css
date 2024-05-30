@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
   --actif-nav-background-color: #015383;
+  --primary: #015383;
+  --success: #5cb85c;
+  --info: #5bc0de;
+  --danger: #ff4d4f;
+  --warning: #f0ad4e;
+  --secondary: #292b2c;
   --inactif-nav-background-color: #F6F7FB;
   --text-inactif-nav: #015383;
   --text-actif-nav: white;
@@ -17,4 +23,71 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 a {
   text-decoration: none!important;
+}
+
+.btn-ant-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+.btn-ant-primary:hover {
+  background: white!important;
+  color: var(--primary);
+  border:  1px solid var(--primary)!important;
+}
+
+.btn-ant-success {
+  background: var(--success);
+  color: white;
+  border: none;
+}
+
+.btn-ant-success:hover {
+  background: white!important;
+  color: var(--success);
+  border:  1px solid var(--success)!important;
+}
+
+.btn-ant-info {
+  background: var(--info);
+  color: white;
+  border: none;
+}
+
+.btn-ant-info:hover {
+  background: white!important;
+  color: var(--info);
+  border:  1px solid var(--info)!important;
+}
+
+.btn-ant-danger {
+  background: var(--danger);
+  color: white;
+  border: none;
+}
+
+.btn-ant-danger:hover {
+  background: white!important;
+  color: var(--danger);
+  border:  1px solid var(--danger)!important;
+}
+
+.btn-ant-warning {
+  background: var(--warning);
+  color: white;
+  border: none;
+}
+
+.btn-ant-warning:hover {
+  background: white!important;
+  color: var(--warning);
+  border:  1px solid var(--warning)!important;
+}
+
+.ant-switch {
+  background: var(--success);
+}
+.ant-switch-checked {
+  background: var(--primary)!important;
 }

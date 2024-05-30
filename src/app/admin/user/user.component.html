@@ -1,7 +1,71 @@
 <br>
 <div class="inner-content">
   <div class="d-sm-flex justify-content-between align-items-center mb-4">
-    <h3 class="text-dark mb-0">Users</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
+    <h3 class="text-dark mb-0">Users management</h3>
+    <button nz-button nzValue="large" nzShape="round" class="btn-ant-success" (click)="openModal(false, false, null)">
+      <span nz-icon nzType="plus"></span>
+    </button>
   </div>
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <nz-table #users [nzData]="listOfData" [nzShowPagination]="false" [nzScroll]="{ x: '1000px', y: '800px' }">
+        <thead>
+        <tr>
+          <th nzWidth="50px" nzLeft>#</th>
+          <th nzLeft>Name</th>
+          <th nzWidth="100px">Is Admin</th>
+          <th>Email</th>
+          <th>Phone number</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (user of users.data; track user.uuid; let i = $index) {
+            <tr>
+              <td nzLeft>{{ i + 1 }}</td>
+              <td nzLeft>{{ user.name }}</td>
+              <td>{{ user.is_admin ? 'Yes' : 'No' }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.phone }}</td>
+              <td>
+                <div nz-row>
+                  <div>
+                    <button
+                      nz-button nzValue="large"
+                      nzShape="circle" class="btn-ant-info bg-info"
+                      (click)="openModal(false, true, i)">
+                      <span nz-icon nzType="eye"></span>
+                    </button>
+                  </div>
+                  <div class="action-item">
+                    <button
+                      nz-button nzValue="large"
+                      nzShape="circle" class="btn-ant-primary"
+                      (click)="openModal(true, false, i)">
+                      <span nz-icon nzType="edit"></span>
+                    </button>
+                  </div>
+                  <div class="action-item">
+                    <button nz-button nzValue="large" nzShape="circle" class="btn-ant-danger">
+                      <span nz-icon nzType="delete"></span>
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+  @if (isVisible) {
+    <app-user-modal
+      [isVisible]="isVisible"
+      [isEdit]="isEdit"
+      [modalData]="modalData"
+      [isShow]="isShow"
+      (closeModal)="hideModal()"
+    ></app-user-modal>
+  }
 </div>
 

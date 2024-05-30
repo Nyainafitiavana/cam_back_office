@@ -7,6 +7,8 @@ import {FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Val
 import {NzInputDirective, NzInputGroupComponent} from "ng-zorro-antd/input";
 import {NzButtonComponent} from "ng-zorro-antd/button";
 import {NzIconDirective} from "ng-zorro-antd/icon";
+import {LoginService} from "./login.service";
+import {ILogin} from "./login.interface";
 @Component({
   selector: 'nz-demo-form-normal-login',
   standalone: true,
@@ -28,6 +30,11 @@ import {NzIconDirective} from "ng-zorro-antd/icon";
 })
 
 export class LoginComponent {
+  constructor(
+    private fb: NonNullableFormBuilder,
+    private readonly loginService: LoginService,
+  ) {}
+
   passwordVisible = false;
   validateForm: FormGroup<{
     email: FormControl<string>;
@@ -39,7 +46,7 @@ export class LoginComponent {
 
   submitForm(): void {
     if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
+      this.loginService.postLogin(this.validateForm.value as ILogin);
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
@@ -49,6 +56,4 @@ export class LoginComponent {
       });
     }
   }
-
-  constructor(private fb: NonNullableFormBuilder) {}
 }

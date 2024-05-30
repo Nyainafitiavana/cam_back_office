@@ -1,0 +1,59 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="{{ isShow ? 'User' : ( isEdit ? 'Edit User' : 'Add new user') }}"
+  [nzOkLoading]="isOkLoading"
+  (nzOnCancel)="handleCancel()"
+>
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="validateForm" class="login-form" >
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your name!">
+          <nz-input-group nzPrefixIcon="user">
+            <input type="text" nz-input formControlName="userName"  placeholder="Name" aria-disabled="true"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <br>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your email address!">
+          <nz-input-group nzPrefixIcon="mail">
+            <input type="text" nz-input formControlName="email" placeholder="Email address"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <br>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your phone number!">
+          <nz-input-group nzPrefixIcon="phone">
+            <input type="text" nz-input formControlName="phone" placeholder="Phone number"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <br>
+      <nz-form-item>
+        <nz-form-label>User mode</nz-form-label>
+        <nz-switch
+          formControlName="isAdmin"
+          [nzCheckedChildren]="checkedTemplate"
+          [nzUnCheckedChildren]="unCheckedTemplate"
+        ></nz-switch>
+        <ng-template #checkedTemplate>Admin</ng-template>
+        <ng-template #unCheckedTemplate>Simple</ng-template>
+      </nz-form-item>
+    </form>
+  </ng-container>
+  <ng-template #modalFooter>
+    <button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
+    @if (!isShow) {
+      @if (isEdit) {
+        <button nz-button nzType="primary" (click)="update(modalData ? modalData.uuid : '')">Save</button>
+      } @else {
+        <button nz-button nzType="primary" (click)="save()">Save</button>
+      }
+    }
+  </ng-template>
+  <ng-container *nzModalFooter>
+    <ng-container *ngTemplateOutlet="modalFooter"></ng-container>
+  </ng-container>
+</nz-modal>
+
